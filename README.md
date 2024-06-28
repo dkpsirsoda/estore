@@ -1,5 +1,5 @@
 # estore
-This is the estore shopping website
+This is the estore shopping website where user can shops anything what they want.
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
