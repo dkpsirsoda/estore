@@ -1,5 +1,6 @@
 import { useSelector } from 'react-redux';
 import './_top-nav.scss'
+import { Link } from 'react-router-dom';
 
 const TopNav = ()=>{
     
@@ -32,16 +33,18 @@ const TopNav = ()=>{
                 <div className='cart-whishlist'>
                     <ul className='p-0'>
                         <li className='list-icon'><i className='fa fa-heart'></i></li>
-                        <li className='list-icon'>
-                            <i className='fa fa-shopping-cart'/>
-                                {
-                                    cartItemCount != 0 ? 
-                                        <div id='cart-item-count'>
-                                            <p>{cartItemCount}</p>
-                                        </div>
-                                    : <></>
-                                }
-                        </li>
+                        <Link to={"/cart"}>
+                            <li className='list-icon'>
+                                <i className='fa fa-shopping-cart'/>
+                                    {
+                                        cartItemCount != 0 ? 
+                                            <div id='cart-item-count'>
+                                                <p>{cartItemCount}</p>
+                                            </div>
+                                        : <></>
+                                    }
+                            </li>
+                        </Link>
                     </ul>
                 </div>
                 </div>

@@ -4,6 +4,7 @@ import productSlice from '../../Redux/Products/productSlice';
 import { getProducts } from '../../Redux/Products/productAction';
 import { useEffect } from 'react';
 import { addCartItem } from '../../Redux/Cart/cartSlice';
+import { Link } from 'react-router-dom';
 
 const Products = ()=>{
 
@@ -16,7 +17,8 @@ const Products = ()=>{
     },[]);
 
     const addToCart = (itemData)=>{
-        dispatch(addCartItem(itemData));
+        const payload = {...itemData, quantity:1};
+        dispatch(addCartItem(payload));
     }
 
     //console.log(cart);
@@ -27,11 +29,21 @@ const Products = ()=>{
                 productData.map((product,key)=>{
                         return(
                             <div className='mx-5 p-3 product-card'>
-                            <div className='product-image-container'>
-                                <img src={require('../../assets/images/shop/'+product.img)}/>
-                            </div>
+                            <Link 
+                                to={"/productDetails"}
+                                state={product}
+                            >
+                                <div className='product-image-container'>                            
+                                    <img src={require('../../assets/images/shop/'+product.img)}/>
+                                </div>
+                            </Link>
                             <div className='product-info'>
-                                <h5><a href='#'>{product.pName}</a></h5>
+                                <h5>
+                                    <Link 
+                                        to={"/productDetails"}
+                                        state={product}
+                                    >{product.pName}</Link>
+                                </h5>
                                 <p className='product-price'>${product.pPrice}</p>
                                 <div className='product-rating'>
                                     <i className='fa fa-star'/>
